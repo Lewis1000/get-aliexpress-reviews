@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer');
-//const jsonStorage = require('./store.json');
+const fs = require('fs');
 
 // Product URL
 const productUrl = 'https://www.aliexpress.com/item/33006043496.html?spm=a2g0o.productlist.0.0.40265f256ExPEv&algo_pvid=3c88fa2f-0937-4aa4-b1f3-4776b412df5b&algo_expid=3c88fa2f-0937-4aa4-b1f3-4776b412df5b-3&btsid=0b8b034e15994107563834577ed541&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_';
@@ -49,5 +49,10 @@ const productUrl = 'https://www.aliexpress.com/item/33006043496.html?spm=a2g0o.p
         return feedbackInfo;
     });
 
-    console.log(fetchReviews[0]);
+    // Writes fetchReviews Data to Local Json File
+    fs.writeFile('./product_reviews/example.json', JSON.stringify(fetchReviews), (err) => {
+        if (err) throw err;
+        console.log('Saved...');
+    });
+    
 })();
