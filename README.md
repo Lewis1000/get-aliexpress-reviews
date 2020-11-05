@@ -1,8 +1,8 @@
-# get-aliexpress-reviews
+# Get AliExpress Reviews
 
 Web scraper utilizing puppeteer.
 
-How it works?
+**How it works?**
 
 1. Navigates to provided product link.
 
