@@ -1,20 +1,23 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
 const app = express();
 
-// Fetching Function
-const fetching = require('./fetching.js');
+// const fetching = require('./fetching.js');
 
-// Port
 const port = 3000;
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+    res.sendFile(path.join(__dirname + '/client/index.html'));
 });
 
-app.get('/results', (req, res) => {
+app.post('/', (req, res) => {
+    console.log(req.body);
     // get req url
-    fetching(/* Input req url */ );
-    res //file with response
+    // fetching(req url)
+    // res results
 });
 
 app.listen(port, () => {
