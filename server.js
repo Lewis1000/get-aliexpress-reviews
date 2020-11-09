@@ -65,7 +65,7 @@ app.post('/results', (req, res) => {
         });
     
         // Returns fetchReviews Data
-        res.render('results', {data: fetchReviews});
+        res.render('results', {fetchReviews});
     })();
 });
 

@@ -3,4 +3,65 @@
     padding: 0;
     height: 100vh;
     width: 100%;
+    font-family: 'Inter', sans-serif;
+}
+.navbar {
+    height: 80px;
+}
+.main {
+    height: calc(100vh - 80px);
+}
+.ali {
+    color: #F79917;
+}
+.express {
+    color: #E52F20;
+}
+.nav-link {
+    font-size: 1rem;
+    color: #4f5464;
+    margin: 0 5px 0 5px;
+    transition: 0.5s;
+}
+.nav-link:hover {
+    color: #4f5464;
+    transition: 0.5s;
+}
+form input[type=text] {
+    padding: 15px;
+    font-size: 1rem;
+    border: none;
+    float: left;
+    width: 85%;
+    background-color: rgba(79, 84, 100, 0.1);
+    border-radius: 5px 0 0 5px;
+    transition: 0s;
+}
+form button {
+    float: left;
+    border: none;
+    width: 15%;
+    padding: 15px;
+    background-color: #E52F20;
+    color: white;
+    font-size: 1rem;
+    border-left: none;
+    cursor: pointer;
+    transition: 0.4s;
+    border-radius: 0 5px 5px 0;
+    transition: 0s;
+}
+form button:hover {
+    background-color: #F79917;
+    transition: 0.4s;
+}
+@media (max-width: 992px) {
+    form input[type=text] {
+        width: 100%;
+        border-radius: 5px 5px 0 0;
+    }
+    form button {
+        width: 100%;
+        border-radius: 0 0 5px 5px;
+    }
 }
