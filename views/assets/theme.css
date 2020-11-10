@@ -7,18 +7,63 @@
 }
 
 /* Custom Navbar */
+.custom-nav {
+    height: 80px;
+    display: flex;
+    padding: 10px 10px 10px 10px;
+}
+.custom-nav-brand {
+    flex: 1;
+    padding: 0 0 0 20px;
+    line-height: 60px;
+}
+.custom-nav-brand a{
+    color: #4f5464;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+.custom-nav-brand a:hover {
+    color: #4f5464;
+    text-decoration: none;
+}
+.custom-nav-toggle {
+    flex: 2;
+    display: none;
+}
+.custom-nav-bar {
+    height: 3px;
+    width: 35px;
+    margin: 4px 0 4px 0;
+    background-color: #fff;
+}
+.custom-nav-items {
+    flex: 2;
+    text-align: right;
+    float: right;
+    list-style: none;
+}
+.custom-nav-item {
+    display: inline-block;
+    margin: 0 8px 0 8px;
+    line-height: 60px;
+}
+.custom-nav-item a{
+    color: #4f5464;
+}
+.custom-nav-item a:hover {
+    color: #4f5464;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+}
+.custom-nav-btn {
+    background-color: rgba(79, 84, 100, 0.1);
+    border-radius: 5px 5px 5px 5px;
+    width: 100%;
+    padding: 20px 20px 20px 20px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
+/* General Styling */
 h1 {
     color: #4f5464;
     font-weight: 300;
@@ -36,31 +81,6 @@ h1 {
 }
 .desc {
     margin: 30px 0 30px 0;
-}
-.navbar {
-    height: 80px;
-}
-.navbar-toggler {
-    margin: 0;
-    padding: 0;
-    border: none;
-}
-.navbar-bar {
-    background-color:  #E52F20;
-    margin: 5px 0 5px 0;
-    width: 35px;
-    height: 4px;
-    border-radius: 4px;
-}
-.nav-link {
-    font-size: 1rem;
-    color: #4f5464;
-    margin: 0 5px 0 5px;
-    transition: 0.5s;
-}
-.nav-link:hover {
-    color: #4f5464;
-    transition: 0.5s;
 }
 form input[type=text] {
     padding: 15px;
@@ -90,7 +110,18 @@ form button:hover {
     background-color: #F79917;
     transition: 0.4s;
 }
+
+/* Mobile View */
 @media (max-width: 992px) {
+    /* Fixing Navbar */
+    .custom-nav-brand {
+        text-align: center;
+        padding: 0;
+    }
+    .custom-nav-items {
+        display: none;
+    }
+
     /* Fixing Search Input - Mobile View */
     form input[type=text] {
         width: 100%;
