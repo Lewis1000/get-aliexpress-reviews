@@ -25,28 +25,16 @@
     </div>
 
     <div class="results">
-      <table class="table review-table">
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Location</th>
-            <th scope="col">Star</th>
-            <th scope="col">Comments</th>
-            <th scope="col">Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% for(var review of fetchReviews) { %>
-            <tr>
-              <td><%= review.name %></td>
-              <td><%= review.location %></td>
-              <td><%= review.star %></td>
-              <td><%= review.review %></td>
-              <td><%= review.time %></td>
-            </tr>
-          <% } %>
-        </tbody>
-      </table>
+      <div class="results-panel">
+
+      </div>
+      <div class="results-main">
+        <% for(var review of fetchReviews) { %>
+          <div class="test">
+            <%= review.name %>
+          </div>
+        <% } %>
+      </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
