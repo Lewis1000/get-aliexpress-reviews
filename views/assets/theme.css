@@ -69,7 +69,7 @@ h1 {
     font-weight: 300;
 }
 .main {
-    height: calc(100vh - 80px);
+    height: calc(100vh - 100px);
 }
 .ali {
     color: #F79917;
@@ -111,8 +111,33 @@ form button:hover {
     transition: 0.4s;
 }
 
+/* Results Page */
+.results {
+    width: 100%;
+    padding: 20px;
+    background-color: rgba(79, 84, 100, 0.1);
+}
+.review-table {
+    border-radius: 5px;
+    background-color: #fff;
+}
+.custom-btn {
+    background-color: #E52F20;
+    color: #fff;
+    border-radius: 5px 5px 5px 5px;
+    padding: 20px 20px 20px 20px;
+    transition: 0.4s;
+}
+.custom-btn:hover {
+    background-color: #F79917;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.4s;
+}
+
 /* Mobile View */
 @media (max-width: 992px) {
+
     /* Fixing Navbar */
     .custom-nav-brand {
         text-align: center;

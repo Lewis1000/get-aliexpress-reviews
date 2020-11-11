@@ -10,38 +10,44 @@
   </head>
   <body>
 
-    <nav class="navbar navbar-expand-lg">
-      <a class="navbar-brand" href="#"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" target="_blank" href="https://github.com/Lewis1000/get-aliexpress-reviews">How it works?</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link source-btn" target="_blank" href="https://github.com/Lewis1000/get-aliexpress-reviews">View Source Code</a>
-          </li>
-        </ul>
+    <div class="custom-nav">
+      <div class="custom-nav-brand"><a href="/">GetReviews</div>
+      <div class="custom-nav-toggle">
+        <div class="custom-nav-bar"></div>
+        <div class="custom-nav-bar"></div>
+        <div class="custom-nav-bar"></div>
       </div>
-    </nav>
+      <ul class="custom-nav-items">
+        <li class="custom-nav-item"><a href="#">Home</a></li>
+        <li class="custom-nav-item"><a target="_blank" href="https://github.com/Lewis1000/get-aliexpress-reviews">How it works?</a></li>
+        <li class="custom-nav-item"><a target="_blank" class="custom-nav-btn" href="https://github.com/Lewis1000/get-aliexpress-reviews">View Source Code</a></li>
+      </ul>
+    </div>
 
-    <table class="table">
-      <% for(var review of fetchReviews) { %>
-        <tr>
-          <td><%= review.name %></td>
-          <td><%= review.location %></td>
-          <td><%= review.star %></td>
-          <td><%= review.time %></td>
-          <td><%= review.review %></td>
-        </tr>
-      <% } %>
-    </table>
+    <div class="results">
+      <table class="table review-table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Location</th>
+            <th scope="col">Star</th>
+            <th scope="col">Comments</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var review of fetchReviews) { %>
+            <tr>
+              <td><%= review.name %></td>
+              <td><%= review.location %></td>
+              <td><%= review.star %></td>
+              <td><%= review.review %></td>
+              <td><%= review.time %></td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>

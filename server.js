@@ -14,7 +14,18 @@ app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
     res.render('index');
-}); 
+});
+
+app.get('/dev', (req, res) => {
+    const fetchReviews = [{
+        name: "userName",
+        location: "userLocation",
+        star: "userStar",
+        review: "userReview",
+        time: "userTime"
+    }];
+    res.render('results', {fetchReviews});
+});
 
 app.post('/results', (req, res) => {
     const productUrl = req.body.producturl;
