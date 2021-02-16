@@ -9,11 +9,11 @@ const port = 3000;
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
-app.use(express.static(__dirname + '/views'));
-app.set('view engine', 'ejs');
+// app.use(express.static(__dirname + '/views'));
+// app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-    res.render('index');
+    // res.render('index');
 });
 
 app.get('/dev', (req, res) => {
@@ -27,7 +27,7 @@ app.get('/dev', (req, res) => {
     res.render('results', {fetchReviews});
 });
 
-app.post('/results', (req, res) => {
+app.post('/reviews', (req, res) => {
     const productUrl = req.body.producturl;
     
     (async () => {
@@ -76,7 +76,7 @@ app.post('/results', (req, res) => {
         });
     
         // Returns fetchReviews Data
-        res.render('results', {fetchReviews});
+        // res.render('results', {fetchReviews});
     })();
 });
 
