@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import axios from 'axios';
 
 // Components
@@ -9,6 +10,17 @@ import Navigation from './components/Navigation';
 import Home from './pages/Home';
 import Results from './pages/Results';
 import Extra from './pages/Extra';
+
+const theme = createMuiTheme({
+  typography: {
+    fontFamily:"Rubik"
+  },
+  mixins: {
+    toolbar: {
+      minHeight:110
+    }
+  }
+});
 
 const App = () => {
   const [isToggle, setIsToggle] = useState(false);
@@ -50,22 +62,24 @@ const App = () => {
   });
 
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <Navigation toggle={() => toggle()} isToggle={isToggle} isMobile={isMobile} />
-          {!isToggle ? <Home isMobile={isMobile} send={(value) => send(value)} /> : null}
-        </Route>
-        <Route path="/results">
-          <Navigation toggle={() => toggle()} isToggle={isToggle} isMobile={isMobile} />
-          {!isToggle ? <Results isMobile={isMobile} results={results} /> : null}
-        </Route>
-        <Route path="/extra">
-          <Navigation toggle={() => toggle()} isToggle={isToggle} isMobile={isMobile} />
-          {!isToggle ? <Extra isMobile={isMobile} /> : null}
-        </Route>
-      </Switch>
-    </Router>
+    <ThemeProvider theme={theme}>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <Navigation toggle={() => toggle()} isToggle={isToggle} isMobile={isMobile} />
+            {!isToggle ? <Home isMobile={isMobile} send={(value) => send(value)} /> : null}
+          </Route>
+          <Route path="/results">
+            <Navigation toggle={() => toggle()} isToggle={isToggle} isMobile={isMobile} />
+            {!isToggle ? <Results isMobile={isMobile} results={results} /> : null}
+          </Route>
+          <Route path="/extra">
+            <Navigation toggle={() => toggle()} isToggle={isToggle} isMobile={isMobile} />
+            {!isToggle ? <Extra isMobile={isMobile} /> : null}
+          </Route>
+        </Switch>
+      </Router>
+    </ThemeProvider>
   );
 };
 
