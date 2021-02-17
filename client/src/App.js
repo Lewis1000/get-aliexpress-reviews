@@ -12,8 +12,16 @@ import Results from './pages/Results';
 import Extra from './pages/Extra';
 
 const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#E52F20"
+    }
+  },
   typography: {
-    fontFamily:"Rubik"
+    fontFamily:"Rubik",
+    button: {
+      textTransform: "none"
+    }
   },
   mixins: {
     toolbar: {
