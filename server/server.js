@@ -20,7 +20,8 @@ app.get('/dev', (req, res) => {
         location: "userLocation",
         star: "3",
         review: "userReview",
-        time: "userTime"
+        time: "userTime",
+        id: "userId"
     }];
 
     res.json(fetchReviews);
@@ -60,13 +61,15 @@ app.post('/reviews', (req, res) => {
                 const userStar = parseInt(element.querySelector('.star-view > span').getAttribute('style').split('width:')[1])/20;
                 const userReview = element.querySelector('.buyer-feedback > span:first-child').textContent.trim();
                 const userTime = element.querySelector('.buyer-feedback > span:last-child').textContent.trim();
+                const userId = element.querySelector('.feedback-id').id;
                 // Creating User Json Response
                 const userJson = {
                     name: userName,
                     location: userLocation,
                     star: userStar,
                     review: userReview,
-                    time: userTime
+                    time: userTime,
+                    id: userId
                 };
                 // Pushing User Json to Feedback Array
                 feedbackInfo.push(userJson);

@@ -12,6 +12,9 @@ import IconButton from '@material-ui/core/IconButton';
 import Send from '@material-ui/icons/Send';
 import FileCopy from '@material-ui/icons/FileCopy';
 
+// Transitions
+import Fade from '@material-ui/core/Fade';
+
 const Home = (props) => {
     const [productValue, setProductValue] = useState("");
 
@@ -21,50 +24,52 @@ const Home = (props) => {
 
     return (
         <React.Fragment>
-            <Box height="calc(100vh - 110px)" minHeight={500} style={{display: "flex", flexDirection: "column"}}>
-                <Box style={{flexGrow: 1}} />
-                <Box textAlign="center" pl={4} pr={4}>
-                    <Container>
-                        {!props.isMobile ?
-                        <Box>
-                            <Box mb={3}>
-                                <Typography variant="h3">Platform created to import <span style={styles.Ali}>Ali</span><span style={styles.Express}>Express</span> reviews</Typography>
-                            </Box>
-                            <Box mb={4}>
-                                <Typography variant="body1" color="textSecondary">Just input your product URL and we'll fetch all current reviews</Typography>
-                            </Box>
-                            <Box style={{display: "flex", flexDirection: "row"}}>
-                                <IconButton color="inherit" href="#">
-                                    <FileCopy />
-                                </IconButton>
-                                <Box style={{flexGrow: 1, marginLeft: "20px", marginRight: "20px"}}>
-                                    <TextField variant="outlined" fullWidth onChange={(e) => setProductValue(e.target.value)} value={productValue} />
+            <Fade in={true} timeout={1500}>
+                <Box height="calc(100vh - 110px)" minHeight={500} style={{display: "flex", flexDirection: "column"}}>
+                    <Box style={{flexGrow: 1}} />
+                    <Box textAlign="center" pl={4} pr={4}>
+                        <Container>
+                            {!props.isMobile ?
+                            <Box>
+                                <Box mb={3}>
+                                    <Typography variant="h3">Platform created to import <span style={styles.Ali}>Ali</span><span style={styles.Express}>Express</span> reviews</Typography>
                                 </Box>
-                                <Button startIcon={<Send />} variant="contained" color="primary" size="large" disableElevation style={styles.Button} onClick={() => clickEvent()}>Get Reviews</Button>
-                            </Box>
-                            <Box pt={3} >
-                                
-                            </Box>
-                        </Box> :
-                        <Box>
-                            <Box mb={3}>
-                                <Typography variant="h4">Platform created to import <span style={styles.Ali}>Ali</span><span style={styles.Express}>Express</span> reviews</Typography>
-                            </Box>
-                            <Box mb={4}>
-                                <Typography variant="body2" color="textSecondary">Just input your product URL and we'll fetch all current reviews</Typography>
-                            </Box>
-                            <Box style={{display: "flex", flexDirection: "column"}}>
-                                <Box style={{flexGrow: 1, marginBottom: "20px", display: "flex", flexDirection: "row"}}>
-                                    <TextField variant="outlined" fullWidth onChange={(e) => setProductValue(e.target.value)} value={productValue} />
+                                <Box mb={4}>
+                                    <Typography variant="body1" color="textSecondary">Just input your product URL and we'll fetch all current reviews</Typography>
                                 </Box>
-                                <Button startIcon={<Send />} variant="contained" color="primary" size="large" disableElevation fullWidth style={styles.Button} onClick={() => clickEvent()}>Get Reviews</Button>
+                                <Box style={{display: "flex", flexDirection: "row"}}>
+                                    <IconButton color="inherit" href="#">
+                                        <FileCopy />
+                                    </IconButton>
+                                    <Box style={{flexGrow: 1, marginLeft: "20px", marginRight: "20px"}}>
+                                        <TextField variant="outlined" fullWidth onChange={(e) => setProductValue(e.target.value)} value={productValue} />
+                                    </Box>
+                                    <Button startIcon={<Send />} variant="contained" color="primary" size="large" disableElevation style={styles.Button} onClick={() => clickEvent()}>Get Reviews</Button>
+                                </Box>
+                                <Box pt={3} >
+                                    
+                                </Box>
+                            </Box> :
+                            <Box>
+                                <Box mb={3}>
+                                    <Typography variant="h4">Platform created to import <span style={styles.Ali}>Ali</span><span style={styles.Express}>Express</span> reviews</Typography>
+                                </Box>
+                                <Box mb={4}>
+                                    <Typography variant="body2" color="textSecondary">Just input your product URL and we'll fetch all current reviews</Typography>
+                                </Box>
+                                <Box style={{display: "flex", flexDirection: "column"}}>
+                                    <Box style={{flexGrow: 1, marginBottom: "20px", display: "flex", flexDirection: "row"}}>
+                                        <TextField variant="outlined" fullWidth onChange={(e) => setProductValue(e.target.value)} value={productValue} />
+                                    </Box>
+                                    <Button startIcon={<Send />} variant="contained" color="primary" size="large" disableElevation fullWidth style={styles.Button} onClick={() => clickEvent()}>Get Reviews</Button>
+                                </Box>
                             </Box>
-                        </Box>
-                        }
-                    </Container>
+                            }
+                        </Container>
+                    </Box>
+                    <Box style={{flexGrow: 1}} />
                 </Box>
-                <Box style={{flexGrow: 1}} />
-            </Box>
+            </Fade>
         </React.Fragment>
     );
 };

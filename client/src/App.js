@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import axios from 'axios';
 
 // Components
 import Navigation from './components/Navigation';
+import Loading from './components/Loading';
 
 // Pages
 import Home from './pages/Home';
 import Results from './pages/Results';
-import Extra from './pages/Extra';
 
 const theme = createMuiTheme({
   palette: {
@@ -35,67 +36,77 @@ const theme = createMuiTheme({
   }
 });
 
-const App = () => {
-  const [isToggle, setIsToggle] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const [results, setResults] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [errors, setErrors] = useState(null);
+class App extends Component {
+  state = {
+    isToggle: false,
+    isMobile: false,
+    isLoading: true,
+    errors: null
+  };
 
-  function toggle() {
-      if (isToggle) {
-          setIsToggle(false);
+  toggle = () => {
+      if (this.state.isToggle) {
+          this.setState({isToggle: false});
       } else {
-          setIsToggle(true);
+          this.setState({isToggle: true});
       };
   };
 
-  function mobile() {
+  mobile = () => {
     if (window.innerWidth < 600) {
-      setIsMobile(true);
+      this.setState({isMobile: true});
     } else {
-      setIsMobile(false);
+      this.setState({isMobile: false});
     };
   };
 
-  function send(value) {
-    setLoading(true);
+  send = (value) => {
+    this.setState({isLoading: true});
+    window.location.href = "/results";
     axios.post("/reviews", {producturl: value})
     .then((response) => {
-      setResults(response.data);
-      setLoading(false);
+      this.props.dispatch({type: "SET", data: response.data});
+      this.setState({isLoading: false});
     })
     .catch((err) => {
-      setErrors(err.message);
-      setLoading(false);
+      this.setState({isLoading: false, errors: err});
     });
   };
 
-  useEffect(() => {
-    window.addEventListener("resize", () => mobile());
-    mobile();
-  });
+  componentDidMount() {
+    window.addEventListener("resize", this.mobile);
+    this.mobile();
+    this.setState({isLoading: false});
+  };
 
-  return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Navigation toggle={() => toggle()} isToggle={isToggle} isMobile={isMobile} />
-      <Router>
-        <Switch>
-          <Route path="/results">
-            {!isToggle ? <Results isMobile={isMobile} results={results} /> : null}
-          </Route>
-          <Route path="/extra">
-            {!isToggle ? <Extra isMobile={isMobile} /> : null}
-          </Route>
-          <Route path="/">
-            {!isToggle ? <Home isMobile={isMobile} send={(value) => send(value)} /> : null}
-            {results ? <Redirect to="/results" /> : null}
-          </Route>
-        </Switch>
-      </Router>
-    </ThemeProvider>
-  );
+  render() {
+    return (
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        {!this.state.isLoading ?
+        <React.Fragment>
+          <Router>
+            <Switch>
+              <Route path="/results">
+                <Navigation toggle={this.toggle} isToggle={this.state.isToggle} isMobile={this.state.isMobile} />
+                <Results isMobile={this.state.isMobile} results={this.props.results} />
+              </Route>
+              <Route exact path="/">
+                <Navigation toggle={this.toggle} isToggle={this.state.isToggle} isMobile={this.state.isMobile} />
+                {!this.state.isToggle ? <Home isMobile={this.state.isMobile} send={(value) => this.send(value)} /> : null}
+              </Route>
+            </Switch>
+          </Router>
+        </React.Fragment> :
+        <Loading />
+        }
+      </ThemeProvider>
+    );
+  }
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  results: state.results
+});
+
+export default connect(mapStateToProps)(App);

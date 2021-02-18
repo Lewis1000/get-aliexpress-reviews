@@ -24,7 +24,7 @@ const Navigation = (props) => {
                         <RateReview />
                     </IconButton>
                     <Box style={{flexGrow: 1}} />
-                    <IconButton href="/" color="inherit" onClick={() => props.toggle()}>
+                    <IconButton href="/" color="inherit" onClick={props.toggle}>
                         <Close />
                     </IconButton>
                 </Toolbar>
@@ -33,9 +33,6 @@ const Navigation = (props) => {
                     <Box textAlign="center">
                         <Link underline="none" href="/">
                             <Typography variant="subtitle1" color="textPrimary">Home</Typography>
-                        </Link>
-                        <Link underline="none" href="/">
-                            <Typography variant="subtitle1" color="textPrimary">How it works</Typography>
                         </Link>
                         <Link underline="none" href="/">
                             <Typography variant="subtitle1" color="textPrimary">View source code</Typography>
@@ -56,9 +53,6 @@ const Navigation = (props) => {
                     <React.Fragment>
                         <Link underline="none" href="/" style={styles.Link}>
                             <Typography variant="subtitle1" color="textSecondary">Home</Typography>
-                        </Link>
-                        <Link underline="none" href="/extra" style={styles.Link}>
-                            <Typography variant="subtitle1" color="textSecondary">How it works</Typography>
                         </Link>
                         <Button startIcon={<GitHub />} size="large" variant="contained" color="default" href="https://github.com/Lewis1000/get-aliexpress-reviews" target="_blank" disableElevation style={styles.Button}>
                             View source code
