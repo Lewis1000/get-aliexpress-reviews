@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // Components
 import Box from '@material-ui/core/Box';
@@ -13,11 +13,17 @@ import Send from '@material-ui/icons/Send';
 import FileCopy from '@material-ui/icons/FileCopy';
 
 const Home = (props) => {
+    const [productValue, setProductValue] = useState("");
+
+    function clickEvent() {
+        props.send(productValue);
+    };
+
     return (
         <React.Fragment>
             <Box height="calc(100vh - 110px)" minHeight={500} style={{display: "flex", flexDirection: "column"}}>
                 <Box style={{flexGrow: 1}} />
-                <Box textAlign="center" pl={3} pr={3}>
+                <Box textAlign="center" pl={4} pr={4}>
                     <Container>
                         {!props.isMobile ?
                         <Box>
@@ -32,9 +38,9 @@ const Home = (props) => {
                                     <FileCopy />
                                 </IconButton>
                                 <Box style={{flexGrow: 1, marginLeft: "20px", marginRight: "20px"}}>
-                                    <TextField variant="outlined" fullWidth />
+                                    <TextField variant="outlined" fullWidth onChange={(e) => setProductValue(e.target.value)} value={productValue} />
                                 </Box>
-                                <Button startIcon={<Send />} variant="contained" color="primary" size="large" disableElevation style={styles.Button}>Get Reviews</Button>
+                                <Button startIcon={<Send />} variant="contained" color="primary" size="large" disableElevation style={styles.Button} onClick={() => clickEvent()}>Get Reviews</Button>
                             </Box>
                             <Box pt={3} >
                                 
@@ -49,12 +55,9 @@ const Home = (props) => {
                             </Box>
                             <Box style={{display: "flex", flexDirection: "column"}}>
                                 <Box style={{flexGrow: 1, marginBottom: "20px", display: "flex", flexDirection: "row"}}>
-                                    <IconButton color="inherit" href="#">
-                                        <FileCopy />
-                                    </IconButton>
-                                    <TextField variant="outlined" style={{marginLeft: "12px", width: "100%"}} />
+                                    <TextField variant="outlined" fullWidth onChange={(e) => setProductValue(e.target.value)} value={productValue} />
                                 </Box>
-                                <Button startIcon={<Send />} variant="contained" color="primary" size="large" disableElevation fullWidth style={styles.Button}>Get Reviews</Button>
+                                <Button startIcon={<Send />} variant="contained" color="primary" size="large" disableElevation fullWidth style={styles.Button} onClick={() => clickEvent()}>Get Reviews</Button>
                             </Box>
                         </Box>
                         }
@@ -72,10 +75,12 @@ const styles = {
         borderRadius: "8px"
     },
     Ali: {
-        color: "#F79917"
+        color: "#F79917",
+        fontWeight: 700
     },
     Express: {
-        color: "#E52F20"
+        color: "#E52F20",
+        fontWeight: 700
     }
 };
 

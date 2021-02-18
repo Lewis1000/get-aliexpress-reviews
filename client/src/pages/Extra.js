@@ -9,9 +9,9 @@ const Extra = (props) => {
         <React.Fragment>
             <Box height="calc(100vh - 110px)" minHeight={500} style={{display: "flex", flexDirection: "column"}}>
                 <Box style={{flexGrow: 1}} />
-                <Box>
+                <Box textAlign="center">
                     <Container>
-                        
+                        test
                     </Container>
                 </Box>
                 <Box style={{flexGrow: 1}} />
