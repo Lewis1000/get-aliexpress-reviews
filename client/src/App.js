@@ -62,10 +62,10 @@ class App extends Component {
 
   send = (value) => {
     this.setState({isLoading: true});
-    window.location.href = "/results";
     axios.post("/reviews", {producturl: value})
     .then((response) => {
       this.props.dispatch({type: "SET", data: response.data});
+      window.location.href = "/results";
       this.setState({isLoading: false});
     })
     .catch((err) => {
@@ -87,7 +87,7 @@ class App extends Component {
         <React.Fragment>
           <Router>
             <Switch>
-              <Route path="/results">
+              <Route exact path="/results">
                 <Navigation toggle={this.toggle} isToggle={this.state.isToggle} isMobile={this.state.isMobile} />
                 <Results isMobile={this.state.isMobile} results={this.props.results} />
               </Route>

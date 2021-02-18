@@ -22,27 +22,25 @@ function loadfromLocalStorage() {
   try {
     const serializedState = localStorage.getItem("state");
     if (serializedState === null) {
-      return undefined;
+      return initialState;
     };
     return JSON.parse(serializedState);
   } catch(e) {
     console.log(e);
-    return undefined;
-  }
+    return initialState;
+  };
 };
 
 function reducer(state = initialState, action) {
   switch(action.type) {
     case "SET":
       return {results: action.data};
-    case "CLEAR":
-      return state;
     default:
-      return state;
+      return loadfromLocalStorage();
   };
 };
 
-const store = createStore(reducer, loadfromLocalStorage());
+const store = createStore(reducer);
 store.subscribe(() => saveToLocalStorage(store.getState()));
 
 ReactDOM.render(
