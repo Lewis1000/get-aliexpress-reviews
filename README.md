@@ -1,11 +1,11 @@
-## NodeJS Web Scraper
+### NodeJS Web Scraper
 
-### Backend Packages Used
+#### Backend Packages Used
 
 * [Express](https://expressjs.com/)
 * [Puppeteer](https://developers.google.com/web/tools/puppeteer)
 
-### Frontend Packages Used
+#### Frontend Packages Used
 
 * [React](https://reactjs.org/)
 * [Redux](https://redux.js.org/)
