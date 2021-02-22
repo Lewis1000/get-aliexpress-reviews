@@ -14,6 +14,7 @@ import FileCopy from '@material-ui/icons/FileCopy';
 
 // Transitions
 import Fade from '@material-ui/core/Fade';
+import { Avatar } from '@material-ui/core';
 
 const Home = (props) => {
     const [productValue, setProductValue] = useState("");
@@ -21,6 +22,10 @@ const Home = (props) => {
     function clickEvent() {
         props.send(productValue);
     };
+
+    function copyEvent() {
+        setProductValue("https://www.aliexpress.com/item/33006043496.html");
+    }
 
     return (
         <React.Fragment>
@@ -38,7 +43,7 @@ const Home = (props) => {
                                     <Typography variant="body1" color="textSecondary">Just input your product URL and we'll fetch all current reviews</Typography>
                                 </Box>
                                 <Box style={{display: "flex", flexDirection: "row"}}>
-                                    <IconButton color="inherit" href="#">
+                                    <IconButton color="inherit" onClick={() => copyEvent()}>
                                         <FileCopy />
                                     </IconButton>
                                     <Box style={{flexGrow: 1, marginLeft: "20px", marginRight: "20px"}}>
@@ -62,6 +67,7 @@ const Home = (props) => {
                                         <TextField variant="outlined" fullWidth onChange={(e) => setProductValue(e.target.value)} value={productValue} />
                                     </Box>
                                     <Button startIcon={<Send />} variant="contained" color="primary" size="large" disableElevation fullWidth style={styles.Button} onClick={() => clickEvent()}>Get Reviews</Button>
+                                    <Button startIcon={<FileCopy />} variant="contained" color="default" size="large" disableElevation fullWidth style={styles.Button} onClick={() => copyEvent()}>Use Example Product</Button>
                                 </Box>
                             </Box>
                             }
@@ -77,6 +83,7 @@ const Home = (props) => {
 const styles = {
     Button: {
         padding: "16px 25px 16px 25px",
+        marginBottom: "8px",
         borderRadius: "8px"
     },
     Ali: {

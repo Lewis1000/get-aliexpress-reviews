@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -60,6 +60,10 @@ class App extends Component {
     };
   };
 
+  addError = (value) => {
+    this.setState({errors: value});
+  };
+
   send = (value) => {
     this.setState({isLoading: true});
     axios.post("/reviews", {producturl: value})
@@ -85,6 +89,7 @@ class App extends Component {
         <CssBaseline />
         {!this.state.isLoading ?
         <React.Fragment>
+          {this.state.errors ? <p>{this.state.errors}</p> : null}
           <Router>
             <Switch>
               <Route exact path="/results">
@@ -93,7 +98,7 @@ class App extends Component {
               </Route>
               <Route exact path="/">
                 <Navigation toggle={this.toggle} isToggle={this.state.isToggle} isMobile={this.state.isMobile} />
-                {!this.state.isToggle ? <Home isMobile={this.state.isMobile} send={(value) => this.send(value)} /> : null}
+                {!this.state.isToggle ? <Home isMobile={this.state.isMobile} send={(value) => this.send(value)} addError={(value) => this.addError(value)} /> : null}
               </Route>
             </Switch>
           </Router>

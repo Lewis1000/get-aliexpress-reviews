@@ -14,33 +14,38 @@ import Menu from '@material-ui/icons/Menu';
 import Close from '@material-ui/icons/Close';
 import RateReview from '@material-ui/icons/RateReview';
 
+// Transitions
+import Fade from '@material-ui/core/Fade';
+
 const Navigation = (props) => {
     return (
         <React.Fragment>
             {props.isToggle ?
-            <Box height="100vh" width="100%" minHeight={500} bgcolor="primary.main">
-                <Toolbar>
-                    <IconButton color="inherit" href="/">
-                        <RateReview />
-                    </IconButton>
-                    <Box style={{flexGrow: 1}} />
-                    <IconButton href="/" color="inherit" onClick={props.toggle}>
-                        <Close />
-                    </IconButton>
-                </Toolbar>
-                <Box height="calc(100vh - 110px)" minHeight={500} style={{display: "flex", flexDirection: "column"}}>
-                    <Box style={{flexGrow: 1}} />
-                    <Box textAlign="center">
-                        <Link underline="none" href="/">
-                            <Typography variant="subtitle1" color="textPrimary">Home</Typography>
-                        </Link>
-                        <Link underline="none" href="/">
-                            <Typography variant="subtitle1" color="textPrimary">View source code</Typography>
-                        </Link>
+            <Fade in={true} timeout={1500}>
+                <Box height="100vh" width="100%" minHeight={500} bgcolor="primary.main">
+                    <Toolbar>
+                        <IconButton color="inherit" href="/">
+                            <RateReview />
+                        </IconButton>
+                        <Box style={{flexGrow: 1}} />
+                        <IconButton href="/" color="inherit" onClick={props.toggle}>
+                            <Close />
+                        </IconButton>
+                    </Toolbar>
+                    <Box height="calc(100vh - 110px)" minHeight={300} style={{display: "flex", flexDirection: "column"}} pb={6}>
+                        <Box style={{flexGrow: 1}} />
+                        <Box textAlign="center">
+                            <Link underline="none" href="/">
+                                <Typography variant="subtitle1" color="textPrimary" style={styles.ToggleItem}>Home</Typography>
+                            </Link>
+                            <Link underline="none" href="/">
+                                <Typography variant="subtitle1" color="textPrimary" style={styles.ToggleItem}>View Source Code</Typography>
+                            </Link>
+                        </Box>
+                        <Box style={{flexGrow: 1}} />
                     </Box>
-                    <Box style={{flexGrow: 1}} />
                 </Box>
-            </Box> :
+            </Fade> :
             <Toolbar>
                 <IconButton color="inherit" href="/">
                     <RateReview />
@@ -72,6 +77,9 @@ const styles = {
     Button: {
         padding: "16px 25px 16px 25px",
         borderRadius: "8px"
+    },
+    ToggleItem: {
+        margin: "25px 25px 25px 25px"
     }
 };
 
